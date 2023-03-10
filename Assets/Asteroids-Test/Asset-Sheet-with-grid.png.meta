@@ -20,6 +20,30 @@ TextureImporter:
   - first:
       213: -1726097757761665497
     second: Asset-Sheet-with-grid_5
+  - first:
+      213: 2057024838295721675
+    second: Asset-Sheet-with-grid_6
+  - first:
+      213: 643177078380424125
+    second: Asset-Sheet-with-grid_7
+  - first:
+      213: -7511125864934681526
+    second: Asset-Sheet-with-grid_8
+  - first:
+      213: 2689729309790656432
+    second: Asset-Sheet-with-grid_9
+  - first:
+      213: 2067971404889329799
+    second: Asset-Sheet-with-grid_10
+  - first:
+      213: -25013330996141632
+    second: Asset-Sheet-with-grid_11
+  - first:
+      213: 3550941550068958475
+    second: Asset-Sheet-with-grid_12
+  - first:
+      213: -1632517497796077809
+    second: Asset-Sheet-with-grid_13
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -141,7 +165,7 @@ TextureImporter:
         width: 15
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -225,7 +249,7 @@ TextureImporter:
         width: 13
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -246,7 +270,7 @@ TextureImporter:
         width: 13
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -254,6 +278,174 @@ TextureImporter:
       bones: []
       spriteID: 726840d0c3bab08e0800000000000000
       internalID: -1726097757761665497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asset-Sheet-with-grid_6
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc695cc11350c8c10800000000000000
+      internalID: 2057024838295721675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asset-Sheet-with-grid_7
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbbe98425260de800800000000000000
+      internalID: 643177078380424125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asset-Sheet-with-grid_8
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a44d15d42de13c790800000000000000
+      internalID: -7511125864934681526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asset-Sheet-with-grid_9
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b757047e86d35520800000000000000
+      internalID: 2689729309790656432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asset-Sheet-with-grid_10
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78018124909e2bc10800000000000000
+      internalID: 2067971404889329799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asset-Sheet-with-grid_11
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c1635b028227aff0800000000000000
+      internalID: -25013330996141632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asset-Sheet-with-grid_12
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b05090ea68a774130800000000000000
+      internalID: 3550941550068958475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asset-Sheet-with-grid_13
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0751463cf12859e0800000000000000
+      internalID: -1632517497796077809
       vertices: []
       indices: 
       edges: []

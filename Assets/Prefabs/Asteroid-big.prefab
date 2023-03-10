@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 1733529491672902940}
   - component: {fileID: 1733529491672902939}
   - component: {fileID: 1733529491672902943}
+  - component: {fileID: 1650610900271520710}
   m_Layer: 0
   m_Name: Asteroid-big
   m_TagString: Untagged
@@ -131,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   splitPrefab: {fileID: 1733529491672902936, guid: 1b6bb77f5f6e74014944d20c97e83064, type: 3}
   splitCount: 2
-  randomVelRange: 1.5
+  randomVelRange: 1
 --- !u!114 &1733529491672902940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,3 +199,22 @@ PolygonCollider2D:
       - {x: -0.34400463, y: -0.7166047}
       - {x: 0.3952819, y: -0.77693295}
       - {x: 0.7799425, y: -0.42891198}
+--- !u!95 &1650610900271520710
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733529491672902936}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 22d12e1b3b1374b88a71e2c0140d4b92, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

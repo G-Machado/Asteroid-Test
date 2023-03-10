@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (GameloopManager.instance.state != GameloopManager.GameState.GAMEPLAY) return;
+
         float verticalAxis = Input.GetAxis("Vertical");
         Accelerate(verticalAxis);
 
@@ -47,7 +49,7 @@ public class PlayerController : MonoBehaviour
         if (Mathf.Abs(input) > .05f)
         {
             targetVelocity = Vector3.ClampMagnitude(targetVelocity +
-                 accelerationSpeed * transform.up, maxVelocity);
+                 accelerationSpeed * transform.up * Time.deltaTime, maxVelocity);
         }
         else
         {

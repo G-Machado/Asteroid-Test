@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   splitPrefab: {fileID: 0}
   splitCount: 2
-  randomVelRange: 5
+  randomVelRange: 4
 --- !u!114 &1733529491672902940
 MonoBehaviour:
   m_ObjectHideFlags: 0

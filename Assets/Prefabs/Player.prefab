@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 3436671715264633252}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,10 +130,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 2
-  accelerationSpeed: 15
+  accelerationSpeed: 12
   maxVelocity: 4
   targetVelocity: {x: 0, y: 0, z: 0}
   velocityDamp: 0.8
+  shotPrefab: {fileID: 6450690856143674402, guid: f379e10625e3848a495639bfd8d8b6fe, type: 3}
+  shotCD: 0.5
+  shotSpeed: 10
 --- !u!50 &3436671715264633255
 Rigidbody2D:
   serializedVersion: 4
