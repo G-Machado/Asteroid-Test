@@ -13,13 +13,11 @@ public class PlayerController : MonoBehaviour
     public float velocityDamp = .1f;
     private Rigidbody2D rb;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         float verticalAxis = Input.GetAxis("Vertical");
@@ -37,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
     private void Accelerate(float input)
     {
-        if (Mathf.Abs(input) > .1f)
+        if (Mathf.Abs(input) > .05f)
         {
             targetVelocity = Vector3.ClampMagnitude(targetVelocity +
                  accelerationSpeed * transform.up, maxVelocity);
