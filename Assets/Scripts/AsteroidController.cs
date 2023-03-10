@@ -24,6 +24,7 @@ public class AsteroidController : MonoBehaviour
         if(collision.tag == "shot")
         {
             SplitAsteroid();
+            Destroy(collision.gameObject);
         }
     }
 

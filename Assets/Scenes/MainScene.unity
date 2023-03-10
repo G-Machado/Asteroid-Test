@@ -721,7 +721,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3436671715264633249, guid: 7dbef221894d944cf9636f7ff9de7197, type: 3}
       propertyPath: m_TagString
-      value: shot
+      value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3436671715264633254, guid: 7dbef221894d944cf9636f7ff9de7197, type: 3}
+      propertyPath: shotCD
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436671715264633254, guid: 7dbef221894d944cf9636f7ff9de7197, type: 3}
+      propertyPath: shotSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436671715264633254, guid: 7dbef221894d944cf9636f7ff9de7197, type: 3}
+      propertyPath: shotPrefab
+      value: 
+      objectReference: {fileID: 6450690856143674402, guid: f379e10625e3848a495639bfd8d8b6fe, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7dbef221894d944cf9636f7ff9de7197, type: 3}

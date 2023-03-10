@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+    [Header("Movement Variables")]
     public float rotateSpeed;
     public float accelerationSpeed;
     public float maxVelocity;
@@ -12,6 +12,12 @@ public class PlayerController : MonoBehaviour
     [Range(0, 1)]
     public float velocityDamp = .1f;
     private Rigidbody2D rb;
+
+    [Header("Shot Variables")]
+    public GameObject shotPrefab;
+    public float shotCD;
+    public float shotSpeed;
+    private float lastShotTime;
 
     void Start()
     {
@@ -26,6 +32,9 @@ public class PlayerController : MonoBehaviour
         float horizontalAxis = Input.GetAxis("Horizontal");
         if(Mathf.Abs(verticalAxis) < .5f)
             Rotate(horizontalAxis);
+
+        if (Input.GetKey(KeyCode.Space) && Time.time - lastShotTime > shotCD)
+            Shot();
     }
 
     private void Rotate(float input)
@@ -46,5 +55,16 @@ public class PlayerController : MonoBehaviour
         }
 
         rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, 1 - velocityDamp);
+    }
+
+    private void Shot()
+    {
+        GameObject shotClone = Instantiate(shotPrefab, transform.position,
+            Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z - 90));
+        shotClone.GetComponent<Rigidbody2D>().velocity = shotClone.transform.right * -shotSpeed;
+
+        lastShotTime = Time.time;
+
+        Destroy(shotClone, 3f);
     }
 }
