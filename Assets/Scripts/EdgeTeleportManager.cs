@@ -13,26 +13,25 @@ public class EdgeTeleportManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "topBarrier")
+        if(collision.tag == "topBarrier" && rb.velocity.y > 0)
         {
-            if(rb.velocity.y > 0)
-                transform.position = new Vector3(transform.position.x, transform.position.y * -1, transform.position.z);
+            transform.position =
+                new Vector3(transform.position.x, transform.position.y * -1, transform.position.z);
         }
-        else if (collision.tag == "botBarrier")
+        else if (collision.tag == "botBarrier" && rb.velocity.y < 0)
         {
-            if(rb.velocity.y < 0)
-                transform.position = new Vector3(transform.position.x, transform.position.y * -1, transform.position.z);
+            transform.position =
+                new Vector3(transform.position.x, transform.position.y * -1, transform.position.z);
         }
-        else if (collision.tag == "leftBarrier")
+        else if (collision.tag == "leftBarrier" && rb.velocity.x < 0)
         {
-            if (rb.velocity.x < 0)
-                transform.position = new Vector3(transform.position.x * -1, transform.position.y, transform.position.z);
+            transform.position =
+                new Vector3(transform.position.x * -1, transform.position.y, transform.position.z);
         }
-        else if (collision.tag == "rightBarrier")
+        else if (collision.tag == "rightBarrier" && rb.velocity.x > 0)
         {
-            if (rb.velocity.x > 0)
-                transform.position = new Vector3(transform.position.x * -1, transform.position.y, transform.position.z);
+            transform.position =
+                new Vector3(transform.position.x * -1, transform.position.y, transform.position.z);
         }
-
     }
 }

@@ -49,13 +49,14 @@ public class GameloopManager : MonoBehaviour
     void Start()
     {
         highScore = PlayerPrefs.GetInt("highScore", 0);
-        MenuManager.instance.highestScoreText.text = highScore.ToString();
+        MenuManager.instance.UpdateHighscoreTexts(highScore);
     }
 
     private void Update()
     {
         if (GameloopManager.instance.state != GameloopManager.GameState.GAMEPLAY) return;
 
+        // Asteroid spawn mechanics
         if (Time.time - lastAsteroidSpawnTime > asteroidSpawnCD)
             SpawnAsteroid();
     }
@@ -68,7 +69,7 @@ public class GameloopManager : MonoBehaviour
             Random.Range(-5, 5)
             );
 
-        GameObject asteroidClone = Instantiate(asteroidPrefab, randomPos, Quaternion.Euler(randomPos), transform);
+        Instantiate(asteroidPrefab, randomPos, Quaternion.Euler(randomPos), transform);
 
         lastAsteroidSpawnTime = Time.time;
     }
@@ -76,23 +77,31 @@ public class GameloopManager : MonoBehaviour
     public void IncreaseScore()
     {
         currentScore++;
-        MenuManager.instance.currentScoreText.text = currentScore.ToString();
+
+        MenuManager.instance.UpdateScoreTexts(currentScore);
+
+        if (instance.highScore < instance.currentScore)
+        {
+            PlayerPrefs.SetInt("highScore", instance.currentScore);
+            MenuManager.instance.UpdateHighscoreTexts(currentScore);
+        }
     }
 
     public void StartGame()
     {
         if (state == GameState.GAMEPLAY) return;
 
+        // Asteroids setup
         DestroyAsteroids();
         SpawnInitialAsteroids();
 
         SetState(GameState.GAMEPLAY);
         MenuManager.instance.StartGame();
 
-
         currentScore = 0;
-        MenuManager.instance.currentScoreText.text = currentScore.ToString();
+        MenuManager.instance.UpdateScoreTexts(currentScore);
 
+        // Create new player if previous is destroyed
         if (PlayerController.instance == null)
         {
             Instantiate(instance.playerPrefab, Vector3.zero, Quaternion.identity);
@@ -107,10 +116,6 @@ public class GameloopManager : MonoBehaviour
         if (state == GameState.GAMEOVER)
         {
             MenuManager.instance.GameOver();
-            if (instance.highScore < instance.currentScore)
-            {
-                PlayerPrefs.SetInt("highScore", instance.currentScore);
-            }
             Invoke("DestroyAsteroids", 1f);
         }
     }

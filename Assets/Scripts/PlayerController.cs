@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [Range(0, 1)]
     public float velocityDamp = .1f;
     private Rigidbody2D rb;
+    public GameObject propulsionFX;
 
     [Header("Shot Variables")]
     public GameObject shotPrefab;
@@ -34,13 +35,16 @@ public class PlayerController : MonoBehaviour
     {
         if (GameloopManager.instance.state != GameloopManager.GameState.GAMEPLAY) return;
 
+        // Movement mechanics
         float verticalAxis = Input.GetAxis("Vertical");
         Accelerate(verticalAxis);
 
+        // Rotation mechanics
         float horizontalAxis = Input.GetAxis("Horizontal");
         if(Mathf.Abs(verticalAxis) < .5f)
             Rotate(horizontalAxis);
 
+        // Shot mechanics
         if (Input.GetKey(KeyCode.Space) && Time.time - lastShotTime > shotCD)
             Shot();
     }
@@ -56,10 +60,13 @@ public class PlayerController : MonoBehaviour
         {
             targetVelocity = Vector3.ClampMagnitude(targetVelocity +
                  accelerationSpeed * transform.up * Time.deltaTime, maxVelocity);
+
+            propulsionFX.SetActive(true);
         }
         else
         {
             targetVelocity *= .99f;
+            propulsionFX.SetActive(false);
         }
 
         rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, 1 - velocityDamp);

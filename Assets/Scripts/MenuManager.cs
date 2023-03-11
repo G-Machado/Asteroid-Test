@@ -13,8 +13,8 @@ public class MenuManager : MonoBehaviour
 
     public GameObject StartPanel, GameOverPanel, GameplayPanel;
 
-    public Text currentScoreText;
-    public Text highestScoreText;
+    public Text[] currentScoreText;
+    public Text[] highestScoreText;
 
     void Start()
     {
@@ -34,6 +34,21 @@ public class MenuManager : MonoBehaviour
     {
         GameplayPanel.SetActive(false);
         GameOverPanel.SetActive(true);
+    }
 
+    public void UpdateScoreTexts(int score)
+    {
+        for (int i = 0; i < currentScoreText.Length; i++)
+        {
+            currentScoreText[i].text = score.ToString();
+        }
+    }
+
+    public void UpdateHighscoreTexts(int score)
+    {
+        for (int i = 0; i < highestScoreText.Length; i++)
+        {
+            highestScoreText[i].text = score.ToString();
+        }
     }
 }

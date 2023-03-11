@@ -13,10 +13,13 @@ public class AsteroidController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        // Initial velocity
         Vector2 newRandomVel = new Vector2(Random.Range(-randomVelRange, randomVelRange + .01f),
                 Random.Range(-randomVelRange, randomVelRange + .01f));
         rb.velocity = newRandomVel;
 
+        // Initial rotation
         rb.AddTorque(newRandomVel.magnitude * 10);
     }
 
@@ -60,9 +63,14 @@ public class AsteroidController : MonoBehaviour
             {
                 GameObject splitClone = Instantiate(splitPrefab, transform.position, transform.rotation, GameloopManager.instance.transform);
 
+                // Initial velocity
                 Vector2 newRandomVel = new Vector2(Random.Range(-randomVelRange, randomVelRange + .01f),
                     Random.Range(-randomVelRange, randomVelRange + .01f));
-                splitClone.GetComponent<Rigidbody2D>().velocity = newRandomVel;
+                Rigidbody2D splitRb = splitClone.GetComponent<Rigidbody2D>();
+                splitRb.velocity = newRandomVel;
+
+                // Initial rotation
+                splitRb.AddTorque(newRandomVel.magnitude * 10);
             }
         }
 
