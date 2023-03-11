@@ -10,7 +10,6 @@ public class AsteroidController : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -23,12 +22,15 @@ public class AsteroidController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (GameloopManager.instance.state != GameloopManager.GameState.GAMEPLAY) return;
+
         if(collision.tag == "shot")
         {
             // Explosion effect
             GameloopManager.SpawnExplosionFX(collision.transform.position);
 
             SplitAsteroid();
+            GameloopManager.instance.IncreaseScore();
             Destroy(collision.gameObject);
         }
         else if (collision.tag == "Player")
@@ -44,7 +46,8 @@ public class AsteroidController : MonoBehaviour
                 GameloopManager.SpawnExplosionFX(collision.transform.position + randomOffset);
             }
 
-            GameloopManager.SetState(GameloopManager.GameState.GAMEOVER);
+            SplitAsteroid();
+            GameloopManager.instance.GameOver();
             Destroy(collision.gameObject);
         }
     }
@@ -55,12 +58,11 @@ public class AsteroidController : MonoBehaviour
         {
             for (int i = 0; i < splitCount; i++)
             {
-                GameObject splitClone = Instantiate(splitPrefab, transform.position, transform.rotation);
+                GameObject splitClone = Instantiate(splitPrefab, transform.position, transform.rotation, GameloopManager.instance.transform);
 
                 Vector2 newRandomVel = new Vector2(Random.Range(-randomVelRange, randomVelRange + .01f),
                     Random.Range(-randomVelRange, randomVelRange + .01f));
                 splitClone.GetComponent<Rigidbody2D>().velocity = newRandomVel;
-
             }
         }
 

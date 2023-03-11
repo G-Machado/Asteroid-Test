@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+    private void Awake()
+    {
+        instance = this;
+    }
+
     [Header("Movement Variables")]
     public float rotateSpeed;
     public float accelerationSpeed;

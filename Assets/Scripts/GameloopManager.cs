@@ -11,6 +11,17 @@ public class GameloopManager : MonoBehaviour
         instance = this;
     }
 
+    public static void SetState(GameState state)
+    {
+        instance.state = state;
+    }
+
+    public static void SpawnExplosionFX(Vector3 position)
+    {
+        GameObject explosionClone = Instantiate(instance.explosionPrefab, position, Quaternion.Euler(position));
+        Destroy(explosionClone, 1f);
+    }
+
     public enum GameState
     {
         MENU,
@@ -27,20 +38,18 @@ public class GameloopManager : MonoBehaviour
     [Header("FX Variables")]
     public GameObject explosionPrefab;
 
+    [Header("Score Variables")]
+    public int highScore;
+    public int currentScore;
+
+    [Header("Gameplay Variables")]
+    public int initialAsteroidCount;
+    public GameObject playerPrefab;
+
     void Start()
     {
-        state = GameState.GAMEPLAY;
-    }
-
-    public static void SetState(GameState state)
-    {
-        instance.state = state;
-    }
-
-    public static void SpawnExplosionFX(Vector3 position)
-    {
-        GameObject explosionClone = Instantiate(instance.explosionPrefab, position, Quaternion.Euler(position));
-        Destroy(explosionClone, 1f);
+        highScore = PlayerPrefs.GetInt("highScore", 0);
+        MenuManager.instance.highestScoreText.text = highScore.ToString();
     }
 
     private void Update()
@@ -59,13 +68,70 @@ public class GameloopManager : MonoBehaviour
             Random.Range(-5, 5)
             );
 
-        GameObject asteroidClone = Instantiate(asteroidPrefab, randomPos, Quaternion.Euler(randomPos));
+        GameObject asteroidClone = Instantiate(asteroidPrefab, randomPos, Quaternion.Euler(randomPos), transform);
 
         lastAsteroidSpawnTime = Time.time;
     }
 
-    private void SpawnExplosion(Vector3 pos)
+    public void IncreaseScore()
     {
-        
+        currentScore++;
+        MenuManager.instance.currentScoreText.text = currentScore.ToString();
+    }
+
+    public void StartGame()
+    {
+        if (state == GameState.GAMEPLAY) return;
+
+        DestroyAsteroids();
+        SpawnInitialAsteroids();
+
+        SetState(GameState.GAMEPLAY);
+        MenuManager.instance.StartGame();
+
+
+        currentScore = 0;
+        MenuManager.instance.currentScoreText.text = currentScore.ToString();
+
+        if (PlayerController.instance == null)
+        {
+            Instantiate(instance.playerPrefab, Vector3.zero, Quaternion.identity);
+        }
+    }
+
+    public void GameOver()
+    {
+        if (state == GameState.GAMEOVER) return;
+
+        SetState(GameState.GAMEOVER);
+        if (state == GameState.GAMEOVER)
+        {
+            MenuManager.instance.GameOver();
+            if (instance.highScore < instance.currentScore)
+            {
+                PlayerPrefs.SetInt("highScore", instance.currentScore);
+            }
+            Invoke("DestroyAsteroids", 1f);
+        }
+    }
+
+    private void DestroyAsteroids()
+    {
+        if (state == GameState.GAMEPLAY) return;
+
+        AsteroidController[] asteroids = GetComponentsInChildren<AsteroidController>();
+        for (int i = 0; i < asteroids.Length; i++)
+        {
+            SpawnExplosionFX(asteroids[i].transform.position);
+            Destroy(asteroids[i].gameObject);  
+        }
+    }
+
+    private void SpawnInitialAsteroids()
+    {
+        for (int i = 0; i < initialAsteroidCount; i++)
+        {
+            SpawnAsteroid();
+        }
     }
 }
